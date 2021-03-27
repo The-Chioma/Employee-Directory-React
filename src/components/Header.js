@@ -3,7 +3,7 @@ import React from "react";
 
 const Header = () => {
     return (
-        <h1>Welcome to my Employee Directory</h1>
+        <h1 id = "head">Welcome to my Employee Directory</h1>
     )
 }
 
