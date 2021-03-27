@@ -7,4 +7,3 @@ const getEmployeeData = () => {
 }
 
 export default getEmployeeData;
-
