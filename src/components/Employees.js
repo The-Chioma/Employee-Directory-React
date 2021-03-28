@@ -10,7 +10,7 @@ const Employees = () => {
 
   useEffect(() => {
     axios
-      .get("https://randomuser.me/api/?results=50")
+      .get("https://randomuser.me/api/?results=100")
       .then((res) => {
         setEmployee(res.data.results);
         console.log(res.data.results);
@@ -34,13 +34,13 @@ const Employees = () => {
     setSearch(event.target.value);
   };
 
-  const handleFilter = (event) => {
-    setFilteredEmployees(event.target.value);
-  };
+//   const handleFilter = (event) => {
+//     setFilteredEmployees(event.target.value);
+//   };
   return (
       <>
     <div className="input-group mb-3" align="center">
-      <select
+      {/* <select
         className="form-options"
         id="inputGroupSelect02"
         onChange={handleFilter}
@@ -51,8 +51,8 @@ const Employees = () => {
         <option>Email</option>
         <option>Location</option>
       </select>
-      <br />
-      <input onChange={handleSearch} type= "text"></input>
+      <br /> */}
+      <input onChange={handleSearch} type= "text" placeholder = "Enter Employee Name Here"></input>
     </div>  
     <div>
       <div
