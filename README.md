@@ -23,6 +23,6 @@ The user should be able to:
 
 ## Links
 
-* [The URL to the deployed application]()
+* [The URL to the deployed application](https://the-chioma.github.io/Employee-Directory-React/)
 
 * [The URL to the Github repository](https://github.com/The-Chioma/Employee-Directory-React)
