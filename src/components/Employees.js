@@ -19,7 +19,7 @@ const Employees = () => {
   }, []);
 
   // eslint-disable-next-line
-  var filter = employee.filter((em) => {
+  let filter = employee.filter((em) => {
     if (filteredEmployees === "Name") {
       const name = `${em.name.first} ${em.name.last}`;
       return name.toLowerCase().includes(searchEmployee.toLowerCase());
@@ -39,20 +39,8 @@ const Employees = () => {
   };
   return (
       <>
-    <div className="input-group mb-3" align="center">
-      <select
-        className="form-options"
-        id="inputGroupSelect02"
-        onChange={handleFilter}
-        as="select"
-      >
-        <option defaultValue>Choose...</option>
-        <option>Name</option>
-        <option>Email</option>
-        <option>Location</option>
-      </select>
-      <br />
-      <input onChange={handleSearch} type= "text"></input>
+    <div className="input-group mb-3" align="center" width = "100%">
+      <input onChange={handleSearch} type= "text" placeholder="Type Employee Name Here"></input>
     </div>  
     <div>
       <div
