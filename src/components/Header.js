@@ -3,7 +3,10 @@ import React from "react";
 
 const Header = () => {
     return (
-        <h1 id = "head">Welcome to my Employee Directory</h1>
+        <div className = "jumbotron" width = "100%" align = "center">
+        <h1>Welcome to my Employee Directory</h1>
+        <p>Sort Employees by Name or filter by searching an employee's name</p>
+        </div>
     )
 }
 
