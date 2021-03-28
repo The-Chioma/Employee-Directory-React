@@ -5,7 +5,7 @@ const Header = () => {
     return (
         <div className = "jumbotron" width = "100%" align = "center">
         <h1>Welcome to my Employee Directory</h1>
-        <p>Sort Employees by Name or filter by searching an employee's name</p>
+        <p>Search for Employees by name</p>
         </div>
     )
 }

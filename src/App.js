@@ -2,8 +2,6 @@ import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import Employees from "./components/Employees";
 import Header from "./components/Header"
-import Search from "./components/Search"
-//import API from "./utils/API"
 
 import "./App.css";
 
@@ -14,7 +12,6 @@ function App() {
   return (
     <Router>
         <Header />
-        <Search />
         <Employees />
     </Router>
   );

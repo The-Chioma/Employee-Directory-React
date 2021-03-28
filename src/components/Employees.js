@@ -1,13 +1,12 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import EmployeeTable from "./Table";
-import { Table }from "react-bootstrap"
+import { Table } from "react-bootstrap"
 
 const Employees = () => {
   const [employee, setEmployee] = useState([]);
-  //const [sortedEmployees, setSortedEmployees] = useState("");
-  const [searchEmployees, setSearch] = useState("");
-  const [filteredEmployees, setFilteredEmployees] = useState("fullName");
+  const [searchEmployee, setSearch] = useState("");
+  const [filteredEmployees, setFilteredEmployees] = useState("Name");
 
   useEffect(() => {
     axios
@@ -21,32 +20,55 @@ const Employees = () => {
 
   // eslint-disable-next-line
   var filter = employee.filter((em) => {
-    if (filteredEmployees === "fullName") {
-      const fullName = `${em.name.first} ${em.name.last}`;
-      return fullName.toLowerCase().includes(searchEmployees.toLowerCase());
+    if (filteredEmployees === "Name") {
+      const name = `${em.name.first} ${em.name.last}`;
+      return name.toLowerCase().includes(searchEmployee.toLowerCase());
     } else if (filteredEmployees === "Email") {
-      return em.email.toLowerCase().includes(searchEmployees.toLowerCase());
+      return em.email.toLowerCase().includes(searchEmployee.toLowerCase());
     } else if (filteredEmployees === "Location") {
       const location = `${em.location.city}, ${em.location.state}, ${em.location.country}`;
-      return location.toLowerCase().includes(searchEmployees.toLowerCase());
+      return location.toLowerCase().includes(searchEmployee.toLowerCase());
     }
   });
+  const handleSearch = (event) => {
+    setSearch(event.target.value);
+  };
+
+  const handleFilter = (event) => {
+    setFilteredEmployees(event.target.value);
+  };
   return (
+      <>
+    <div className="input-group mb-3" align="center">
+      <select
+        className="form-options"
+        id="inputGroupSelect02"
+        onChange={handleFilter}
+        as="select"
+      >
+        <option defaultValue>Choose...</option>
+        <option>Name</option>
+        <option>Email</option>
+        <option>Location</option>
+      </select>
+      <br />
+      <input onChange={handleSearch} type= "text"></input>
+    </div>  
     <div>
-      <div className="employee-app"
+      <div
         employee={employee}
         setSearch={setSearch}
-        setFilter={setFilteredEmployees}
+        setFilteredEmployees={setFilteredEmployees}
       />
-      <Table hover className = "table">
-        <thead className="table-heading">
+      <Table hover>
+        <thead>
           <tr>
             <th>Picture</th>
-            <th>Fullname</th>
+            <th>Name</th>
             <th>Email</th>
             <th>Location</th>
             <th>
-              DOB{" "}
+              Date of Birth{" "}
             </th>
           </tr>
         </thead>
@@ -57,7 +79,7 @@ const Employees = () => {
                   <EmployeeTable
                   key={em.cell}
                   picture={em.picture.thumbnail}
-                  fullname={`${em.name.first} ${em.name.last}`}
+                  Name={`${em.name.first} ${em.name.last}`}
                   email={em.email}
                   location={`${em.location.city}, ${em.location.state}, ${em.location.country}`}
                   dateOfBirth={em.dob.date}
@@ -67,6 +89,7 @@ const Employees = () => {
         </tbody>
     </Table>
     </div>
+    </>
   );
 };
 export default Employees;
